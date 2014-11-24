@@ -1,0 +1,53 @@
+
+<div class="col-md-12" ng-show="!user.dt_create" style="margin-top:20px;">
+  <form  name="registerform" novalidate>
+      <div class="row">
+        <div class="col-md-3">
+          Email 
+        </div>
+        <div class="col-md-9">
+          <input type="text" name="email" required ng-model="register.email" ng-pattern="pattern"/>
+          <div ng-show="registerform.email.$dirty && registerform.email.$invalid">
+            Invalid: <span ng-show="registerform.email.$error.required">email is required </span>
+            <span ng-show="registerform.email.$invalid && !registerform.email.$error.required">email is not valid </span>
+          </div> 
+        </div>
+      </div>
+      </br>
+      
+      <div class="row">
+        <div class="col-md-3">
+          Password
+        </div>
+        <div class="col-md-9">
+          <input type="password" name="password" required ng-model="register.password" ng-minlength="6"/>
+          <div ng-show="registerform.password.$dirty && registerform.password.$invalid">
+           <span ng-show="registerform.password.$error.required">Invalid:  password is required </span>
+           <span ng-show="registerform.password.$error.minlength">Invalid:  password is too short </span>
+          </div> 
+        </div>
+      </div>
+      </br>
+
+      <div class="row">
+        <div class="col-md-3">
+          Retype Password
+        </div>
+        <div class="col-md-9">
+           <input type="password" ng-model="register.verify" nx-equal="register.password" name="verify" required ng-minlength="6">
+           <div ng-show="registerform.verify.$dirty && registerform.verify.$invalid">
+            <span ng-show="registerform.verify.$error.required">Invalid:  password is required </span>
+            <span ng-show="!registerform.verify.$error.required && registerform.verify.$error.nxEqual">Invalid: passwords mismatch </span>
+          </div> 
+        </div>
+      </div>
+      </br>
+
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <input type="submit" class="btn btn-success"  ng-click="signup()" ng-disabled="registerform.$invalid"/>
+          <div ng-show="error">{{message}}</div>
+        </div>
+      </div>
+  </form>
+</div>

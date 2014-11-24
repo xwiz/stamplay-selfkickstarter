@@ -1,0 +1,156 @@
+<style type="text/css">
+
+  .css-form input[type="text"], .css-form input[type="radio"], select, .css-form textarea{
+  	width: 100%;
+  }
+
+  .css-form .row{
+  	margin-top: 10px;
+  }
+
+  .css-form input[type="submit"]{
+  	padding: 10px;
+  }
+
+  .form-group.checkbox-group label.radio-inline:first-child{
+  	padding-left: 0px!important;
+  }
+
+</style>
+
+<div class="row">
+
+ 	<div id="{{formId}}-form-body" class="col-md-6 col-md-offset-3" ng-hide="submitSuccess">
+		
+			<form name="formsubmit" class="css-form" role="form" novalidate ng-hide="form.onlyLoggedUser && !user.dt_create">
+
+				<div ng-repeat="field in form.fields">
+					
+					<div class="form-group" ng-if="field.type === 'text'">
+						<label style="color: white;text-transform: capitalize;font-size: 20px;" for="{{field.id}}">{{field.name}} <span ng-if="field.required"*</span></label>
+						<input 
+							id="{{field.id}}" 
+							type="{{field.type}}" 
+							ng-name="{{field.id}}" 
+							ng-model="formmodel[field.id]"
+							ng-required="{{field.required}}"
+							/>
+					</div>
+
+					<div class="form-group" ng-if="field.type === 'textarea'">
+						<label style="color: white;text-transform: capitalize;font-size: 20px;" for="{{field.id}}">{{field.name}} <span ng-if="field.required"*</span></label>
+						<textarea style="resize: none;"
+							id="{{field.id}}"
+							class="form-control" 
+							ng-name="{{field.id}}" 
+							type="{{field.type}}" 
+							ng-model="formmodel[field.id]"
+							ng-required="{{field.required}}"
+							>
+						</textarea>
+					</div>
+
+					<div class="form-group"  ng-if="field.type === 'dropdown'">
+						<label for="{{field.id}}">{{field.name}} <span ng-if="field.required"*</span></label>
+						<select 
+							id="{{field.id}}"
+							ng-name="{{field.id}}"
+							type="{{field.type}}"
+							ng-model="formmodel[field.id]"
+							ng-required="{{field.required}}"
+						>
+								<option value=""> </option>
+								<option ng-repeat="option in field.options" value= "{{option}}">
+									{{option}}</option>
+						</select>
+					</div>					
+
+					<div class="form-group" ng-if="field.type === 'radio'">
+						<p><strong>{{field.name}}</strong> <span ng-if="field.required"*</span></p>
+						<label 
+							ng-repeat="option in field.options" 
+							for="{{field.id}}" 
+							class="radio-inline">
+								<input
+									id="{{field.id}}"
+									ng-required="{{field.required}}"
+									ng-model="formmodel[field.id]"
+								  ng-name="{{field.id}}"
+									type="radio" value="{{option}}">{{option}}
+						</label>
+					</div>	
+
+					<div class="form-group checkbox-group" ng-if="field.type === 'checkbox'">
+						<p><strong>{{field.name}}</strong> <span ng-if="field.required"*</span></p>
+						<label ng-repeat="option in field.options" for="{{field.id}}" class="radio-inline" >
+						    <!-- NEED TO DIG DEEPER  for checkbox validation -->
+								<input
+									ng-model="formmodel[field.id][option]"
+									ng-true-value="{{option}}"
+									ng-false-value="false"
+								 	ng-name="{{field.id}}"
+									type="checkbox" 
+									value="{{option}}"
+									>
+									<span>{{option}}</span>
+						</label>
+					</div>	
+
+					<div style="margin-bottom:10px;" ng-show="formsubmit.{{field.id}}.$dirty && formsubmit.{{field.id}}.$invalid">
+    			  <strong>Invalid:</strong>
+  			  	<span ng-show="formsubmit.{{field.id}}.$error.required">
+      				{{field.id}} is required
+      			</span>
+    			</div>
+
+    		</div>
+
+  <div class="clearfix"></div>
+
+				<div class="row">
+					<div class="col-md-12 text-center">
+				    <button class="btn btn-xl" type="submit" ng-click="submit()" ng-disabled="formsubmit.$invalid" type="submit">Send Message</button>
+					</div>
+				</div>
+
+			</form>
+
+		<br>
+	</div>
+
+	<div class="col-md-12 text-center" ng-show="submitSuccess">
+		<div class="alert alert-success" role="alert">
+      <strong>Well done! </strong> Your form has been successfully submitted.
+    </div>	
+	</div>
+
+	<div class="col-md-12 text-center" ng-show="submitError">
+		<div class="alert alert-danger" role="alert">
+      <strong>Oh snap! </strong> There was an error on form submit.
+    </div>
+	</div>
+
+	<div class="col-md-12 text-center" ng-show="submitMustLogin">
+		<div class="alert alert-warning" role="alert">
+      <strong>Warning! </strong> Please login to submit this form.
+    </div>
+	</div>
+
+	<div class="col-md-12 text-center" ng-show="submitAlreadyAnswered">
+		<div class="alert alert-info" role="alert">
+      <strong>Hey! </strong> You already answered to this.
+    </div>
+	</div>
+
+	<div class="col-md-12 text-center" ng-show="submitExpired">
+		<div class="alert alert-warning" role="alert">
+      <strong>Warning! </strong> You can no longer submit cause this form is expired.
+    </div>
+	</div>	
+
+	<div class="col-md-12 text-center" ng-show="form.onlyLoggedUser && !user.dt_create">
+		<div class="alert alert-info" role="alert">
+      <strong>Heads up! </strong> This form can be submitted only by logged users.
+    </div>
+	</div>
+</div>

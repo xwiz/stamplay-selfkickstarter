@@ -1,0 +1,99 @@
+<style>
+
+	.thumbnail {
+	    line-height: 20px;
+	    overflow: hidden;
+	    word-break: normal;
+	}
+
+	.thumbnail img {
+	    max-width: 200px;
+	    max-height: 150px;
+	}
+
+	.upload-progress{
+		height: 8px!important;
+	}
+
+	.btn-file {
+	    position: relative;
+	    overflow: hidden;
+	}
+	.btn-file input[type=file] {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    min-width: 100%;
+	    min-height: 100%;
+	    font-size: 100px;
+	    text-align: right;
+	    filter: alpha(opacity=0);
+	    opacity: 0;
+	    outline: none;
+	    background: white;
+	    cursor: inherit;
+	    display: block;
+	}
+
+</style>
+
+<div ng-if="user.dt_create">
+	<div class="row">
+		<div class="col-md-12">
+
+			<div ng-if="selectedFiles.length == 0">	
+				<div class="thumbnail">
+				  <img ng-src="https://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+				</div>
+			</div>
+				
+			<div ng-if="selectedFiles.length > 0" ng-repeat="f in selectedFiles">
+
+				<div class="thumbnail" ng-show="f">
+					<img ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
+				</div>
+
+				<div class="upload-progress">
+			  	<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{progress[$index]}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress[$index]}}%">
+			    	<span class="sr-only">{{progress[$index]}}% Complete</span>
+			  	</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			
+			<div ng-hide="uploadSuccessfull" class="text-center" style="margin-top:12px;">
+				<span class="btn btn-default btn-file">
+					<span class="glyphicon glyphicon-upload" style="top: 2px;"></span>
+			    Select photo <input type="file" ng-file-select="onFileSelect($files)" accept="image/*">
+				</span>
+			</div>
+
+			<div style="margin-top:12px;" ng-show="typeError" class="alert alert-warning text-center" role="alert">
+	  		<strong>Warning!</strong> Only PNG,GIF,JPG,JPEG files allowed.
+			</div>
+
+			<div ng-show="uploadSuccessfull" class="text-center">
+				<div class="alert alert-success" role="alert">
+				  <strong>Upload completed</strong> 
+			  </div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+<div ng-if="!user.dt_create">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<div class="alert alert-info" role="alert">
+      	<strong>Photo upload</strong> you have to be logged
+    	</div>
+		</div>
+	</div>
+</div>

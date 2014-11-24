@@ -1,0 +1,70 @@
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <img  id="photo-single-view-image" ng-src="{{photo.url}}" style="width: 100%;"/>
+    </div>
+  </div>
+
+ <div class="row option-command-button">
+    <div class="col-md-8 col-md-offset-2 option-command-bar">
+      <div class="row ">
+          <button class="btn btn-success" ng-if="wdgtActions.vote" ng-show="voted" ng-click="vote('upvote')">Vote</button>
+          <button class="btn btn-success" ng-if="wdgtActions.vote" ng-show="!voted" ng-click="vote('downvote')">downVote</button> 
+          <div class="pull-right" ng-if="wdgtActions.rate"> 
+            <rating ng-model="rateNum" ng-click="rate(rateNum)" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = rateNum"></rating>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row option-command-button">
+    <div class="col-md-2 text-center">
+      <h5>Author:</h5>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+          <div class="col-md-3" ng-if="photo.author">
+            <img class="pull-left" src="{{photo.author.profileImg}}?width=65" >
+         </div>
+        <div class="col-md-9 pull-left">
+            <h4>{{photo.author.displayName}}</h4>
+            <span ng-if="photo.description">{{photo.description}}</span>
+            <span ng-if="!photo.description">No Description</span>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div class="row coments-list">
+      <div class="col-md-8 col-md-offset-2">
+        <div id="comment-list"> 
+          <h3>Comments:</h3>
+             <div class="row" ng-repeat="comment in photo.actions.comments">
+                <div class="col-md-2">
+                  <img class="pull-left" ng-src="{{comment.picture}}">
+               </div>
+              <div class="col-md-10 pull-left">
+                  <h5>{{comment.displayName}}</h5>
+                  <span>{{comment.text}}</span>
+                  <p>{{comment.dt_create | date:"mediumDate" }}<p>
+              </div>
+            </div>
+            <hr>
+       </div>
+      </div>
+  </div>
+  <br>
+
+  <div class="row" ng-show="user.dt_create">
+    <div class="col-md-8 col-md-offset-2 user-comment-form">
+       <div class="row">
+            <div class="col-md-2">
+              <img class="pull-left" ng-src="{{user.profileImg}}">
+           </div>
+           <div id="photo-comment-data">
+             <textarea style="resize:none;" rows="3" cols="55" placeholder="Comment here" ng-model="yourcomment"></textarea>
+            </div>
+        <div>
+        <br>
+       <button class="btn btn-success pull-right" ng-click="comment(yourcomment)">Invia</button>
+    </div>
+  </div>
+  

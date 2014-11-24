@@ -1,0 +1,276 @@
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <a class="navbar-brand page-scroll" href="#page-top">Self Starter</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#rewards">Rewards</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#team">Team</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <stamplay user-navbadge style="padding-top: 15px;padding-bottom: 15px;line-height: 20px;position: relative;display: block;padding-left:15px;"></stamplay>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <header style="background-color: rgb(242,247,248);">
+        <div class="container">
+            <div class="intro-text">
+                <h2 style="color:#008ce1;margin-bottom:35px;">Stamplay</h2>
+                <div class="row">
+                    <br />
+                    <div class="col-md-8 text-left">
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="//www.youtube.com/embed/wZ9sOqDSqyk?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;controls=1&amp;rel=0&amp;showinfo=0&amp;autohide=1&amp;color=white&amp;theme=light" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        
+                        <stamplay project-data data-expire-date="25/12/2015" data-goal="20000" ng-cloak></stamplay>
+            
+                        <br />
+                        <stamplay login-facebook></stamplay>
+                        <br />
+                        <div class="h4 bold" style="margin-top: 15px;">
+                            <img src="https://stamplay.com/images/Giuliano.jpg" class="img-responsive img-circle" style="float:left" width="50"/>
+                            <span class="text-primary" style="line-height: 3;margin-left: 10px;">Giuliano Iacobelli</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <i class="fa fa-envelope fa-2"></i> 
+                            <a href="#contact" id="contact-me" style="margin-left:5px;" class="text-primary">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row" style="color:#404b82;margin-bottom: 30px;">
+                <br />
+                <div class="col-md-8">
+                   <label class="text-left" style="color:#404b82"> 
+                  <h4>Build your next web app without reinventing the wheel</h4>
+                  The best reason to use Stamplay is that it lets you spend a lot less time worrying 
+                  about the server-side logic and more time focusing on the user experience. 
+                  And virtually no time learning how to use it.
+              </label>
+                </div>
+                <div class="col-md-4 text-left" >
+                    <i class="fa fa-tag fa-2"></i> Developement, code 
+                    <br />
+                    <i class="fa fa-globe fa-2"></i> <a href="www.stamplay.com" target="_blank">www.stamplay.com</a>
+                   
+                </div>
+            </div>
+        </div> 
+    </header>
+
+    <!-- Services Section -->
+    <section id="rewards" style="background-color: white;color: white;padding-top: 100px;">
+        <div class="container" style="margin-bottom: 40px;">
+            <div class="row">
+                <div class="col-lg-12 text-center" style="margin-bottom: 40px;">
+                    <h2 class="section-heading" style="color:#404b82">Choose the Reward:</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <div class="month">
+                        <span class="fa-stack fa-lg" style="font-size: 2.5em;">
+                          <i class="fa fa-circle-thin fa-stack-2x"></i>
+                          <i class="fa fa-thumbs-o-up fa-stack-1x"></i>
+                        </span>
+                        <h4 class="service-heading rewards"> Supporter </h4>
+                        <p class="description-reward">Get 2 free starter plan month worth 38$ with all the essential features to start building your first app</p>
+                        <stamplay stripe-customer-payment data-key="pk_test_pJmA0kOREkC3HnHyozSst2r0" data-amount="500" data-currency="USD" data-template-url="5dollar.html" data-image-url="https://editor.stamplay.com/img/logo-home.png" data-success-event="refreshData5"></stamplay>
+                    </div>
+                </div>
+                <div class="col-md-3 " >
+                    <div  class="month">
+                         <span class="fa-stack fa-lg" style="font-size: 2.5em;">
+                          <i class="fa fa-circle-thin fa-stack-2x"></i>
+                          <i class="fa fa-heart fa-stack-1x"></i>
+                        </span>
+                        <h4 class="service-heading rewards"> Lover</h4>
+                        <p class="description-reward">Get 2 free plus plan month worth 90$ to kick-off your next great app with almost no limit</p>
+                        <stamplay stripe-customer-payment data-key="pk_test_pJmA0kOREkC3HnHyozSst2r0" data-amount="1500" data-currency="USD" data-template-url="15dollar.html" data-image-url="https://editor.stamplay.com/img/logo-home.png" data-success-event="refreshData15"></stamplay>
+                        </div>
+                </div>
+                <div class="col-md-3 " >
+                    <div  class="month">
+                        <span class="fa-stack fa-lg" style="font-size: 2.5em;">
+                          <i class="fa fa-circle-thin fa-stack-2x"></i>
+                          <i class="fa fa-star fa-stack-1x"></i>
+                        </span>
+                        <h4 class="service-heading rewards" > Fan</h4>
+                        <p class="description-reward">Get 6 free plus plan month worth 270$ to bootstrap something that wants to last</p>
+                        <stamplay stripe-customer-payment data-key="pk_test_pJmA0kOREkC3HnHyozSst2r0" data-amount="3000" data-currency="USD" data-template-url="30dollar.html" data-image-url="https://editor.stamplay.com/img/logo-home.png" data-success-event="refreshData30"></stamplay>
+
+                    </div>
+                </div>
+                <div class="col-md-3 " >
+                    <div  class="month">
+                        <span class="fa-stack fa-lg" style="font-size: 2.5em;">
+                          <i class="fa fa-circle-thin fa-stack-2x"></i>
+                          <i class="fa fa-trophy fa-stack-1x"></i>
+                        </span>
+                        <h4 class="service-heading rewards"> Fanatic </h4>
+                        <p class="description-reward"> We'll just love you giving back 12 free plus plan month!</p>
+                        <stamplay stripe-customer-payment data-key="pk_test_pJmA0kOREkC3HnHyozSst2r0" data-amount="5000" data-currency="USD" data-template-url="50dollar.html" data-image-url="https://editor.stamplay.com/img/logo-home.png" data-success-event="refreshData50"></stamplay>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="padding-top: 100px;background-color: #008ce1;color:white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" style="color:#404b82">About:</h2>
+                    <h3 class="section-subheading text-muted">Our story</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="{{assetsUrl}}/assets/1.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2009-2011</h4>
+                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="{{assetsUrl}}/assets/2.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>March 2011</h4>
+                                    <h4 class="subheading">An Agency is Born</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image" >
+                                <h4 style="color:white">Be Part
+                                    <br>Of Our
+                                    <br>Story!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="bg-light-gray" style="padding-top: 100px;background-color: rgb(232, 230, 230);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" style="color:#404b82">Our Amazing Team</h2>
+                    <h3 class="section-subheading text-primary">Nice to meet you!.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://stamplay.com/images/Giuliano.jpg" class="img-responsive img-circle" alt="" width="150">
+                        <h4>Giuliano Iacobelli</h4>
+                        <p class="text-primary">CO-Founder</p>
+                       
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://stamplay.com/images/Nicola.jpg" class="img-responsive img-circle" alt="" width="150">
+                        <h4>Nicola Mattina</h4>
+                        <p class="text-primary">CO-Founder</p>
+                      
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://stamplay.com/images/Alessandro.jpg" class="img-responsive img-circle" alt="" width="150">
+                        <h4>Alessandro Oliveri</h4>
+                        <p class="text-primary">Frontend Illusionist</p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://stamplay.com/images/Mirko.jpg" class="img-responsive img-circle" alt="" width="150">
+                        <h4>Mirko di Serafino</h4>
+                        <p class="text-primary">Full-stack Ninja</p>
+                       
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://stamplay.com/images/Claudio.jpg" class="img-responsive img-circle" alt="" width="150">
+                        <h4>Claudio Petrini</h4>
+                        <p class="text-primary">Backend Hero</p>
+                       
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="https://stamplay.com/images/Cristian.jpg" class="img-responsive img-circle" alt="" width="150">
+                        <h4>Cristian Roselli</h4>
+                        <p class="text-primary">Full-stack Ninja</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="padding-top: 100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Contact Us</h2>
+                    <h3 class="section-subheading text-muted">Don't be shy :)</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <stamplay form-submit data-form-id='contact' data-template-url='form-submit.html'></stamplay> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

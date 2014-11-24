@@ -1,0 +1,15 @@
+  <li class="dropdown user-nav-badge page-scroll" ng-if="user.dt_create">    
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      {{user.displayName}}<b class="caret" style="border-top-color: #777;border-bottom-color: #777;"></b>
+    </a>
+    <ul class="dropdown-menu">
+    <li  role="presentation">
+      <a href="/auth/v0/logout">
+        Logout
+        <span class="fa fa-sign-out pull-right">
+      </a>
+    </li>
+    </ul>
+  </li>
+
+<stamplay login-facebook data-template-url="login-navbar.html"></stamplay>

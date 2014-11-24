@@ -1,0 +1,40 @@
+	<div class="photo-gallery">
+  		<div class= "row text-center">
+		  	<li ng-repeat="photo in photos"> 
+		  		<a ng-href="{{$parent.urlPhoto}}?photo-id={{photo._id}}">
+		  			<img ng-src="{{photo.thumbnail}}"></img>
+		  		</a>
+		  		<div>
+		  			<p>by {{photo.author.displayName}}</p>
+		  		</div>
+		  	</li>
+		  	
+		  	<p>
+		  	
+		  	<div>
+			  	<div class="btn-group">
+			  		<button type="button" class="btn btn-default" ng-click="callPhotos(link.prev)" ng-if="link.prev">
+			  			Prev
+			  		</button>
+						<button type="button" class="btn btn-default" ng-click="callPhotos(link.next)" ng-if="link.next" >
+				  		Next
+				  	</button>
+						<button type="button" class="btn btn-default" ng-click="callPhotos(link.last)" ng-if="link.last" >
+				  		Last
+				  	</button>
+				</div>
+			   
+			    <div class="btn-group">
+						<button 
+							ng-repeat="pag in paginator" 
+							type="button" 
+							class="btn btn-default" 
+							ng-class="{active: ((activePage === $index)&& (pag.num-1) == activePage)}"
+							ng-click="callPhotos(pag.url)">
+				  		{{pag.num}}
+				  	</button>
+				</div>
+
+			</div>
+  		</div>
+	</div>

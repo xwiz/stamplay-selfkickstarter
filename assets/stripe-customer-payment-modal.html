@@ -1,0 +1,125 @@
+<style>
+.invalid-field {
+    color: #a94442;
+    padding-top: 5px;
+}
+</style>
+
+<div class="modal-header text-center" style="background-color: #eee;">
+  <button type="button" class="close" ng-click="cancel()" style="color:#337ab7">×</button>
+  <h4 ng-if="!image" class="modal-title text-center" style="color:#008ce1!important">Make a Payment</h4>
+  <img ng-if="image" ng-src="{{image}}" width="100" style="margin-top:10px;"></img>
+</div>
+
+<div class="modal-body">
+  <div class="row text-center">
+
+    <div style="padding: 5px;">
+      <span class="bg-warning" style=""> This demo will not actually charge you as the Stripe component is in test mode. </span>
+    </div>
+    <form class="col-md-12" style="padding:0" stripe-form="stripeCallback" name="form">
+      <div ng-if="errorModal">
+        <p class="bg-warning">{{errorModal}}</p>
+       </div>
+      <div ng-if="errorLogin">
+        <p class="bg-warning">{{errorLogin}}</p>
+      </div>
+      <div class="form-group col-md-12" style="margin-top:35px;">
+        <div class="input-group">
+          <span class="input-group-addon" >
+            <i class="fa fa-credit-card"></i>
+          </span>
+          <input 
+            ng-model="number" 
+            placeholder="Card Number" 
+            payments-format="card"
+            payments-validate="card" 
+            name="card" 
+            class="form-control"
+            ng-init="number='4111111111111111'"
+            value="4111111111111111"/>
+        </div>
+                 
+        <div style="height:20px;">
+          <div ng-if="form.card.$invalid" class="invalid-field">
+            Invalid card number!
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group col-md-7">     
+        <div class="input-group">
+          <span class="input-group-addon" >
+            <i class="fa fa-calendar"></i>
+          </span>            
+          <input 
+            ng-model="expiry" 
+            payments-format="expiry"
+            payments-validate="expiry" 
+            name="expiry"  
+            class="form-control" 
+            placeholder="expire MM/YY"
+            ng-init="expiry='12/2030'"
+            value="12/2030"
+            />
+        </div>
+        
+        <div style="height:20px;">
+          <div ng-if="form.expiry.$invalid" class="invalid-field">
+             Invalid date!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-5">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-lock"></i>
+          </span>
+          <input 
+            ng-model="cvc" 
+            placeholder="CVC" 
+            payments-format="cvc"
+            payments-validate="cvc" 
+            name="cvc" 
+            class="form-control" 
+            placeholder="CVV"
+            ng-init="cvc='123'"
+            value="123"
+            />
+        </div>     
+        <div style="height:20px;">
+          <div ng-if="form.cvc.$invalid" class="invalid-field">
+            Invalid CVC!
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+      <div class="row text-center">
+        <button 
+          ng-if="!process"
+          type="submit" 
+          class="btn btn-primary col-md-8 col-md-offset-2" 
+          ng-disabled="!allValue(number,expiry,cvc)"
+        >Pay {{amount | currencyStripe:currency }}
+        </button>
+        <button 
+          ng-if="process" 
+          type="submit" 
+          class="btn btn-primary col-md-8 col-md-offset-2" 
+          disabled
+        > Processing Payment
+        </button>
+      </div>
+      <div class="row text-center">
+        <br />
+        <div ng-if="errorPayment" class="col-md-8 col-md-offset-2">
+          <p class="bg-danger">Please contact the admin </p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

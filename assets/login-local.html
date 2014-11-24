@@ -1,0 +1,38 @@
+
+<div class="col-md-12" ng-show="!user.dt_create">
+  <form  name="loginform" novalidate>
+      <div class="row">
+        <div class="col-md-3">
+          Email 
+        </div>
+        <div class="col-md-3">
+          <input type="text" name="email" required ng-model="login.email" ng-pattern="pattern"/>
+          <div ng-show="loginform.email.$dirty && loginform.email.$invalid">
+            Invalid: <span ng-show="loginform.email.$error.required">email is required </span>
+            <span ng-show="loginform.email.$invalid && !loginform.email.$error.required">email is not valid </span>
+          </div> 
+        </div>
+      </div>
+      </br>
+      
+      <div class="row">
+        <div class="col-md-3">
+          Password
+        </div>
+        <div class="col-md-3">
+          <input type="password" name="password" required ng-model="login.password"/>
+          <div ng-show="loginform.password.$dirty && loginform.password.$invalid">
+           <span ng-show="loginform.password.$error.required">Invalid:  password is required </span>
+          </div> 
+        </div>
+      </div>
+      </br>
+
+      <div class="row">
+        <div class="col-md-6">
+          <input type="submit" class="btn btn-success pull-right"  ng-click="signin()" ng-disabled="loginform.$invalid"/>
+          <div ng-show="error">{{message}}</div>
+        </div>
+      </div>
+  </form>
+</div>
