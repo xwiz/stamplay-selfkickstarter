@@ -4,7 +4,7 @@
 ![selfkickstarter](http://2.bp.blogspot.com/-WL8GetRAOog/ULT1dTj-4PI/AAAAAAABGCg/_oSuT6xY2Uo/s1600/foodme.png "FoodMe")
 
 **This project is built on the [Stamplay](https://stamplay.com) platform and [AngularJS](http://angularjs.org) to show how to build a  landing page to raise funds leveraging Stripe integration,
-let's say something similar to [kickStarter](http://kickstarter.com) but done in the blink of an eye.**
+let's say something similar to [KickStarter](http://kickstarter.com) but done in the blink of an eye.**
 
 You can test it anytime simply creating a new project on Stamplay and uploading all the frontend assets with our client or our browser based code editor. 
 
@@ -18,8 +18,8 @@ This is a demo of what you can achieve with Stamplay,it's somewhat a clone of [k
 We love javascript and front end framework and this time we show you how you can create this app using [AngularJS](http://angularjs.org) to implement the client side logic. Here are the user stories for this example:
 
 * Guest users can signup with Facebook
-* Logged users can donate a fixed amount for you project.
-* Logged users can ask you any informations with a form.
+* Logged users can donate a fixed amount for you project
+* Logged users can ask you any informations with the submit of a form
 * Admins can set a goal of the campaign 
 * Admins can be notified when a user is charged
 * Admins can see all payment details via Stripe dashboard
@@ -31,11 +31,11 @@ Best of all, we used AngularJS :) Prepare to be amazed.
 
 self-KickStarter is built around the following building blocks
 
-* [User](https://www.stamplay.com/docs#user)
-* [Custom Objects](https://www.stamplay.com/docs#customobject)
-* [Stripe](https://www.stamplay.com/docs#)
-* [Form](https://www.stamplay.com/docs#form)
-* [Email](https://www.stamplay.com/docs#email)
+* [User](http://stamplay.readme.io/v0/docs/user-component)
+* [Custom Objects](http://stamplay.readme.io/v0/docs/working-with-custom-object)
+* [Stripe](http://stamplay.readme.io/v0/docs/description)
+* [Form](http://stamplay.readme.io/v0/docs/working-with-form)
+* [Email](http://stamplay.readme.io/v0/docs/working-with-email)
 
 
 ## Requirements
@@ -102,7 +102,7 @@ Trigger : User - Sign up
 
 Action: Stripe - Create Customer
 
-** Stripe Configuration
+** Stripe Configuration **
 
 User ID : {{user._id}}
 
@@ -138,21 +138,21 @@ User ID : {{user._id}}
 
 
 
-### When a new order is submitted, notify the restaurant owner with an email
+### When a new form entry is submitted, notify the application owner with an email
 
-Trigger : Custom Object - New instance
+Trigger : Form - On submit
 
 Action: Email - Send Email
 
 **Form submit configuration**
 
-	Webhook name: ordercomplete
+	From: Contact
 
 **Send Email configuration**
 
-	to: {{incoming.body.restaurant_owner_email}} 
-	from: foodme@stamplay.com 
-	name: Stamplay FoodMe 
+	to: info@mydomain.com 
+	from: {{entry.data.email}} 
+	name: Stamplay Self kickstarter 
 	Subject: "Thanks for ordering with Stamplay FoodMe"
 	Body: "Good news! <br/><br/>
 
