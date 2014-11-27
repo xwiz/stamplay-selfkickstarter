@@ -1,7 +1,7 @@
 # stamplay-selfkickstarter
 ========================
 
-![selfkickstarter](http://2.bp.blogspot.com/-WL8GetRAOog/ULT1dTj-4PI/AAAAAAABGCg/_oSuT6xY2Uo/s1600/foodme.png "FoodMe")
+![selfkickstarter](https://www.dropbox.com/s/ny1hy7nfjiih9pz/Screenshot%202014-11-27%2010.52.53.png?dl=0 "selfkickstarter")
 
 **This project is built on the [Stamplay](https://stamplay.com) platform and [AngularJS](http://angularjs.org) to show how to build a  landing page to raise funds leveraging Stripe integration,
 let's say something similar to [KickStarter](http://kickstarter.com) but done in the blink of an eye.**
@@ -102,7 +102,7 @@ Trigger : User - Sign up
 
 Action: Stripe - Create Customer
 
-** Stripe Configuration **
+**Stripe Configuration**
 
 User ID : {{user._id}}
 
@@ -114,29 +114,13 @@ Trigger : Stripe - Charge
 
 Action: Custom Object - Create 
 
-** Custom Object Configuration
+**Custom Object Configuration**
 
-User ID : {{user._id}}
+Cobject Schema: Backer
 
-**Form submit configuration**
+lastfour:  {{customer.card.last4}}
 
-	Custom Object: Order
-
-**Send Email configuration**
-
-	to: {{coinstance.email}} //The recipient address taken from the order info 
-	from: foodme@stamplay.com 
-	name: Stamplay FoodMe
-	Subject: "Thanks for ordering with Stamplay FoodMe"
-	Body: "Hi {{coinstance.surname}}, <br/> 
-			your order are : {{coinstance.meals}} <br/>
-			the final price is : {{coinstance.price}} € <br/>
-			and it will be delivered at {{coinstance.address}}<br/>
-			<br/>
-			thanks for choosing Stamplay FoodMe<br/>
-			regards"
-
-
+user: {{customer.userId}}
 
 ### When a new form entry is submitted, notify the application owner with an email
 
@@ -152,112 +136,42 @@ Action: Email - Send Email
 
 	to: info@mydomain.com 
 	from: {{entry.data.email}} 
-	name: Stamplay Self kickstarter 
-	Subject: "Thanks for ordering with Stamplay FoodMe"
-	Body: "Good news! <br/><br/>
-
-			A new order has been placed via FoodMe for your restaurant. 
-			Here are the details:<br/><br/>
-
-			Surname: {{incoming.body.order.surname}}  <br/>
-			Email: {{incoming.body.order.email}} <br/>
-			Meals: {{incoming.body.order.meals}} <br/>
-			<br/><br/>
-			Total: {{incoming.body.order.price}} <br/>
-
-			Hurry up "
-
-
+	from name: {{entry.data.email}} 
+	Subject: {{entry.data.email}}
+	Body: {{entry.data.message}}
 
 _______________________________
 
 
-## The frontend and AngularJS
-
-The whole app is written in two files: `app.js` e `restaurantRating.js`
-**App.js** has all the controllers and two factories while **restaurantRating.js** has the directive to handle restaurant ratings.
-
-
-### App.js
-
-##### Factory UserStatus:
-This Factory is in charge of tracking user status via the **User** `getStatus` API call and expose it to controllers who require it. It acts as a simple caching layer between user status and controllers
-Whenever one or more controller on the same page are in need to know the user status the API call would be effectively done only one time
-
-##### Factory globalVariable:
-This component provides access to global functionalities and variables to avoid code duplication. 
-
-##### Controller NavbarCtrl:
-This controller is the only one present in every view of this app since it's binded to the main navigation bar of the app.
-
-It must be able to recognize user status showing `Login/Logout` button, and moreover it is responsible of understanding the current page visited by the user to highlight it on the navigation bar (check `function RouteIs`).
-
-##### Controller LoginCtrl:
-This is the controller in charge to make the API call to the login endpoint for email+password authentication.
-
-##### Controller RegistrationCtrl
-This controller is in charge for to make the API requests to the signup endpoint for email+password authentication. 
-
-##### Controller RestaurantCtrl
-This controller handles the restaurant list. It listens for filter selection on the home page and update the list accordingly. It has also expose sorting functionalities to rank restaurant by Name, rating or price.
-
-##### Controller MenuCtrl
-This controller is in charge for orders and displaying menu details of the restaurant.
-`getRestaurant` retrieves params from the URL and lookup for the restaurant instance by  `_id`.
-Once loaded it:
-* check the userstatus (if he is logged, we need to know if he already rated this restaurant)
-* loads the meals related to the current restaurant and retrieves details for each one
-* `addToCart` and `removeToCart` functions are responsible to add or remove items from the cart
-* `checkout` function triggers the order completion process. It validates every field before sending the data to the server.
-
-
-### restaurantRating.js
-AngularJS directives are what controls the rendering of the HTML inside an AngularJS application. 
-
-It is possible to implement your own directives too. This is what AngularJS refers to as "teaching HTML new tricks". Here a custom directive called `fm-rating` has been declard and it will display the rating controls. Rating controls are displayed to filter restaurants in the homepage or to let users assign a rating in the restaurant profile page.
-
-
-####Triggering the webhoook
-After a succesfull order we will send a POST request to the webhook `ordercomplete`  containing the order data and the restaurant owner infos  ```$scope.checkout = function(restaurant){...}```. This is easily done by the few lines showed below:
-
-
-	var hookData = {
-            restaurant_owner_email : restaurant.owner_email,
-            order: data
-          }
-
-          $http({method:'POST',data: hookData, url:'/api/webhook/v0/ordercomplete/catch'})
-            .success(function(data, status){})
-            .error(function(data, status){
-              $scope.modal.error = 'Ops Something went Wrong'
-           	})
-
-
------------------------
-
-
 # Managing the app
 
-Everytime you create reasource using Custom Object you can manage instances of the entities in the Admin section. This will let you to easily add edit and delete restaurant, meals and orders.
+First of all connect your Stripe Account on Stamplay Editor, this necessary for 
+Everytime you create reasource using Custom Object you can manage instances of the entities in the Admin section. This will let you to easily add edit 
 
-![Manage Restaurant](http://blog.stamplay.com/wp-content/uploads/2014/09/Schermata-2014-09-03-alle-14.05.29.png "Manage restaurant")
+-----------------------
+
+## The frontend and AngularJS
+
+
+
 
 
 -----------------------
+
 # Cloning
 
 First, clone this repository :
 
-    git clone git@github.com:Stamplay/stamplay-foodme
+    git clone git@github.com:Stamplay/stamplay-selfkickstarter
     
 Or download it as a zip file
 	
-	https://github.com/Stamplay/stamplay-foodme/archive/master.zip 
+	https://github.com/Stamplay/stamplay-selfkickstarter/archive/master.zip 
 
 Then you need to upload the frontend files in your app and you can do it in two ways:
 
 * Copy/Upload them via the Layout section of your app on Stamplay editor
-* [Get Stamplay sync](http://cdn.stamplay.com/stamplay-sync/stamplay-sync.zip) and run **Stamplay Sync**, make it download the frontend assets of your app and then replace them with the ones you got from this repo. Stamplay Sync will upload everything for you on your app.
+* Download and run **Stamplay Sync**, make it download the frontend assets of your app and then replace them with the ones you got from this repo. Stamplay Sync will upload everything for you on your app.
 
 
 -----------------------
@@ -265,8 +179,7 @@ Then you need to upload the frontend files in your app and you can do it in two 
 
 Here are a few ideas for further improvement :
 
-* bring together login and registration controllers by creating a single page to handle both user login and signup
-* add social login like Facebook or Google to enrich user's identity
+* add social login like Google to enrich user's identity
 * if the cart contains more occurencies of a meal, group them
 * let users to comment on the restaurants
 * _Your idea here… ?_
