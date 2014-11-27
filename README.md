@@ -145,7 +145,7 @@ _______________________________
 # Managing the app
 
 Everytime you create reasource using Custom Object you can manage instances of the entities in the Admin section. This will let you to easily add edit.
-First of all create from Admin section an custom Object instance from found model, this instance will need to represent the amoutn raise until now. 
+First of all create from Admin section an custom Object instance from found model, this instance will need to represent the amount raise until now. 
 
 -----------------------
 
