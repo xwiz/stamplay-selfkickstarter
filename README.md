@@ -1,7 +1,7 @@
 # stamplay-selfkickstarter
 ========================
 
-![selfkickstarter](https://www.dropbox.com/s/ny1hy7nfjiih9pz/Screenshot%202014-11-27%2010.52.53.png?dl=0 "selfkickstarter")
+![selfkickstarter]( "selfkickstarter")
 
 **This project is built on the [Stamplay](https://stamplay.com) platform and [AngularJS](http://angularjs.org) to show how to build a  landing page to raise funds leveraging Stripe integration,
 let's say something similar to [KickStarter](http://kickstarter.com) but done in the blink of an eye.**
@@ -142,19 +142,25 @@ Action: Email - Send Email
 
 _______________________________
 
-
 # Managing the app
 
-First of all connect your Stripe Account on Stamplay Editor, this necessary for 
-Everytime you create reasource using Custom Object you can manage instances of the entities in the Admin section. This will let you to easily add edit 
+Everytime you create reasource using Custom Object you can manage instances of the entities in the Admin section. This will let you to easily add edit.
+First of all create from Admin section an custom Object instance from found model, this instance will need to represent the amoutn raise until now. 
 
 -----------------------
 
 ## The frontend and AngularJS
 
+All the logic of the app is on the Stamplay widgets. Is too simple to understand. 
+We also added a single widgets for data management of the campaign, project-data.js, this angular directive handles the success or error callback during payment process.
+In this file is very important that you give a value to foundObjectId variable. Do you remember the instance of found model that we have created one chapter before? Use the _id value of this instance for setting the foundObjectId variable
 
+After your Stripe account was connected copy the stripe key from editor and insert it into all stripe payment widgets on index.html. 
+**Example:**
 
+	<stamplay stripe-customer-payment data-key="[[YOUR STRIPE KEY]]" data-amount="5000" data-currency="USD" data-template-url="50dollar.html" data-image-url="https://editor.stamplay.com/img/logo-home.png" data-success-event="refreshData50">
 
+It is also possible add an attribute call data-error-event on all stripe angular widgets to hanlde the error callback on project-data.js or settings a different template url to change the modal layout.
 
 -----------------------
 
@@ -179,9 +185,8 @@ Then you need to upload the frontend files in your app and you can do it in two 
 
 Here are a few ideas for further improvement :
 
-* add social login like Google to enrich user's identity
-* if the cart contains more occurencies of a meal, group them
-* let users to comment on the restaurants
+* Add social login like Google or Twitter to enrich user's identity
+* Add possibility to comment your project form logged User
 * _Your idea here… ?_
 
 Again, for any questions drop an email to [giuliano.iacobelli@stamplay.com](mailto:giuliano.iacobelli@stamplay.com) :)
