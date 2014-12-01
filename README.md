@@ -129,7 +129,7 @@ Action: Email - Send Email
 
 **Form submit configuration**
 
-	From: Contact
+	Form: Contact
 
 **Send Email configuration**
 
