@@ -104,11 +104,10 @@ Action: Stripe - Create Customer
 
 **Stripe Configuration**
 
-User ID : {{user._id}}
+	User ID : {{user._id}}
 
 
 ### When a customer is charged, then add an item to the cobject collection 
-
 
 Trigger : Stripe - Charge
 
@@ -116,11 +115,11 @@ Action: Custom Object - Create
 
 **Custom Object Configuration**
 
-Cobject Schema: Backer
+	Cobject Schema: Backer
 
-lastfour:  {{customer.card.last4}}
+	lastfour:  {{customer.card.last4}}
 
-user: {{customer.userId}}
+	user: {{customer.userId}}
 
 ### When a new form entry is submitted, notify the application owner with an email
 
