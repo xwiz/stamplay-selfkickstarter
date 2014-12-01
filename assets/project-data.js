@@ -55,6 +55,9 @@ app.directive('projectData', [ function () {
 			  $rootScope.$on('refreshData30', function(){
 			  	incrementBackerAndMoney($scope, 30)
 			  })
+			  $rootScope.$on('refreshData50', function(){
+			  	incrementBackerAndMoney($scope, 50)
+			  })
 
 			}
 		};
