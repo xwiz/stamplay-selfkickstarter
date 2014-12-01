@@ -58,21 +58,21 @@ now you have the data to configure Facebook Login on your app's user module. Go 
 
 
 ### Custom Object
-Let's define the entities for this app, we will define **Backer** and **Found** that are defined as follows:
+Let's define the entities for this app, we will define **Backer** and **Fund** that are defined as follows:
 
 ##### Backer
 
 * Name: `lastfour`, Type: `string`, The last four of the credit card
 * Name: `user`, Type: `user relation`, The user reference 
 
-##### Found
+##### Fund
 
 * Name: `money`, Type: `number`, The total amount raised until now
 
 After setting up this Stamplay will instantly expose Restful APIs for our newly resources the following URIs: 
 
 * `https://APPID.stamplay.com/api/cobject/v0/backer`
-* `https://APPID.stamplay.com/api/cobject/v0/found`
+* `https://APPID.stamplay.com/api/cobject/v0/fund`
 
 ### Stripe
 
@@ -145,7 +145,7 @@ _______________________________
 # Managing the app
 
 Everytime you create reasource using Custom Object you can manage instances of the entities in the Admin section. This will let you to easily add edit.
-First of all create from Admin section an custom Object instance from found model, this instance will need to represent the amount raise until now. 
+First of all create from Admin section an custom Object instance from fund model, this instance will need to represent the amount raise until now. 
 
 -----------------------
 
@@ -153,7 +153,7 @@ First of all create from Admin section an custom Object instance from found mode
 
 All the logic of the app is on the Stamplay widgets. Is too simple to understand. 
 We also added a single widgets for data management of the campaign, project-data.js, this angular directive handles the success or error callback during payment process.
-In this file is very important that you give a value to foundObjectId variable. Do you remember the instance of found model that we have created one chapter before? Use the _id value of this instance for setting the foundObjectId variable
+In this file is very important that you give a value to fundObjectId variable. Do you remember the instance of fund model that we have created one chapter before? Use the _id value of this instance for setting the fundObjectId variable
 
 After your Stripe account was connected copy the stripe key from editor and insert it into all stripe payment widgets on index.html. 
 **Example:**
