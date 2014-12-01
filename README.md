@@ -1,7 +1,7 @@
 # stamplay-selfkickstarter
 ========================
 
-![selfkickstarter]( "selfkickstarter")
+![selfkickstarter](http://blog.stamplay.com/wp-content/uploads/2014/12/Screenshot-2014-11-27-10.52.53.png)
 
 **This project is built on the [Stamplay](https://stamplay.com) platform and [AngularJS](http://angularjs.org) to show how to build a  landing page to raise funds leveraging Stripe integration,
 let's say something similar to [KickStarter](http://kickstarter.com) but done in the blink of an eye.**
